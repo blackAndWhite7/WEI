@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.sdkVersion
+    defaultConfig {
+        applicationId "com.wei.wei"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.sdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //启用renderscript
+        renderscriptTargetApi = 18
+        renderscriptSupportModeEnabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibVersion"
+    compile "com.android.support:cardview-v7:$supportLibVersion"
+    compile "com.android.support:design:$supportLibVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    //welcomeGuide
+    implementation 'io.reactivex:rxandroid:1.1.0'
+    implementation 'io.reactivex:rxjava:1.1.0'
+    //底部导航栏
+    implementation 'com.github.leibnik:WechatRadioBar:1.2'
+    //slideMenu侧边栏
+    implementation 'com.github.yalantis:Side-Menu.Android:1.0.1'
+    implementation 'com.github.ozodrukh:CircularReveal:1.0.4'
+    //contextmenu设置 点赞评论标签等
+    implementation 'com.yalantis:contextmenu:1.0.7'
+    //boom menu
+    implementation 'com.nightonke:boommenu:2.1.1'
+    // Glide
+//    implementation 'com.github.bumptech.glide:glide:4.6.1'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    //classifyActivity
+    implementation 'com.sunfusheng:glideimageview:1.2.0'
+    //galleryActivity
+    implementation('jameson.io.library:library:0.0.1') {
+        exclude group: "com.android.support", module: "support-v4"
+    }
+
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
+    //video
+    implementation 'cn.jzvd:jiaozivideoplayer:6.2.7'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //下拉上拉刷新的框架
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-1'
+
+}
